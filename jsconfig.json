@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@app/*": ["app/*"],
+        }
+    },
+    "include": ["app/**/*", "app/env.d.ts"],
+    "exclude": ["node_modules", "compilado"]
+}
