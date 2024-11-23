@@ -20,6 +20,32 @@ class AArchivos {
      * @param {string} nombre_archivo Nombre del archivo a guardar
      * @returns {string}
      */
+    static obtener_ruta_publico_temp(nombre_archivo) {
+
+        if (os.platform() === "win32") {
+            return path.join(__dirname, '../../publico/temporal/', nombre_archivo);
+        }
+
+        return path.join(__dirname, '../publico/temporal/', nombre_archivo);
+    }
+
+    /**
+     * Obtiene la ruta publica de un archivo
+     * @returns {string}
+     */
+    static obtener_ruta_publico_temp_sin_nombre() {
+        if (os.platform() === "win32") {
+            return path.join(__dirname, '../../publico/temporal');
+        }
+
+        return path.join(__dirname, '../publico/temporal');
+    }
+
+    /**
+     * Obtiene la ruta publica de un archivo
+     * @param {string} nombre_archivo Nombre del archivo a guardar
+     * @returns {string}
+     */
     static obtener_ruta_privado_temp(nombre_archivo) {
 
         if (os.platform() === "win32") {
@@ -45,12 +71,12 @@ class AArchivos {
      * Obtiene la ruta publica de un archivo
      * @returns {string}
      */
-    static obtener_ruta_publico_fotos_usuarios() {
+    static obtener_ruta_publico() {
         if (os.platform() === "win32") {
-            return path.join(__dirname, '../../publico/fotos-usuarios');
+            return path.join(__dirname, '../../publico');
         }
 
-        return path.join(__dirname, '../publico/fotos-usuarios');
+        return path.join(__dirname, '../publico');
     }
 
     /**
@@ -61,6 +87,15 @@ class AArchivos {
     static guardar_base64_en_archivo(ruta, base64) {
         const base64Data = base64.replace(/^data:image\/png;base64,/, "");
         fs.writeFileSync(ruta, base64Data, 'base64');
+    }
+
+    /**
+     * Mueve un archivo de un lugar a otro
+     * @param {string} origen 
+     * @param {string} destino 
+     */
+    static mover_archivo(origen, destino) {
+        fs.renameSync(origen, destino)
     }
 }
 

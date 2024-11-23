@@ -36,6 +36,10 @@ class AServidor {
 
         // Crear carpetas privadas
         AArchivos.crear_carpeta_si_no_existe("./privado/")
+        // Crear carpeta temporal
+        AArchivos.crear_carpeta_si_no_existe("./privado/temporal/")
+        // Imagenes temporales
+        AArchivos.crear_carpeta_si_no_existe("./privado/temporal/imagenes/")
         // Crear carpetas publicas
         AArchivos.crear_carpeta_si_no_existe("./publico/")
 
@@ -49,7 +53,10 @@ class AServidor {
         // Interceptor de autenticación (excluir `/publico`)
         this.app.use((req, res, next) => {
             // Si la ruta empieza con "/publico", omitir autenticación
-            if (req.path.startsWith(`${this.ruta_inicial}/publico`)) {
+            if (
+                req.path.startsWith(`${this.ruta_inicial}/publico`) ||
+                req.path.startsWith(`${this.ruta_inicial}/documentacion`)
+            ) {
                 return next()
             }
             // Aplicar autenticación básica para otras rutas
