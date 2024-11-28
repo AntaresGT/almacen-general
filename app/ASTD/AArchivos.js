@@ -10,8 +10,9 @@ class AArchivos {
      * @returns {void}
      */
     static crear_carpeta_si_no_existe(ruta) {
-        if (!fs.existsSync(ruta)) {
-            fs.mkdirSync(ruta)
+        const rutaNormalizada = path.resolve(ruta);
+        if (!fs.existsSync(rutaNormalizada)) {
+            fs.mkdirSync(rutaNormalizada, { recursive: true });
         }
     }
 

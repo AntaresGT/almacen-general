@@ -35,13 +35,10 @@ class AServidor {
         this.app.use(express.urlencoded({ extended: true }))
 
         // Crear carpetas privadas
-        AArchivos.crear_carpeta_si_no_existe("./privado/")
-        // Crear carpeta temporal
-        AArchivos.crear_carpeta_si_no_existe("./privado/temporal/")
-        // Imagenes temporales
-        AArchivos.crear_carpeta_si_no_existe("./privado/temporal/imagenes/")
+        AArchivos.crear_carpeta_si_no_existe("./privado/temporal/imagenes")
         // Crear carpetas publicas
-        AArchivos.crear_carpeta_si_no_existe("./publico/")
+        AArchivos.crear_carpeta_si_no_existe("./publico/fotos")
+        AArchivos.crear_carpeta_si_no_existe("./publico/temporal")
 
         // Directorio publico
         this.app.use(`${this.ruta_inicial}/publico`, express.static('publico'))
