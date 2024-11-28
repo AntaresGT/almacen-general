@@ -98,6 +98,9 @@ class AServidor {
 
         // Rutas de la API
         this.app.use(`${this.ruta_inicial}/apublico`, apublicort)
+        this.app.use(`*`, (req, res) => {
+            res.status(404).json({ mensaje: "Ruta no encontrada" })
+        })
     }
 
     iniciar() {
