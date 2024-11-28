@@ -1,11 +1,11 @@
 import { Router } from "express"
 import { apublicoct } from "./APublico.ct"
-import { subida_imagenes } from "./APublico.fun"
+
 /**
  * @swagger
  * components:
  *  schemas:
- *      generar_directorio:
+ *      generar_directorio_publico:
  *          type: object
  *          properties:
  *              datos:
@@ -26,17 +26,17 @@ class APublicoRt {
     configurar() {
         /**
          * @swagger
-         * /apublico/generar-directorio:
+         * /apublico/generar-directorio-publico:
          *  post:
          *      tags: [APublico]
-         *      summary: Genera un directorio
-         *      description: Genera un directorio si no existe
+         *      summary: Genera un directorio público
+         *      description: Genera un directorio si no existe en la carpeta pública
          *      requestBody:
          *          required: true
          *          content:
          *              application/json:
          *                  schema:
-         *                      $ref: '#/components/schemas/generar_directorio'
+         *                      $ref: '#/components/schemas/generar_directorio_publico'
          *      responses:
          *          '200':
          *              description: Petición realizada correctamente
@@ -63,10 +63,10 @@ class APublicoRt {
          *                      schema:
          *                          type: object
          */
-        this.router.post("/generar-directorio", apublicoct.generar_directorio)
+        this.router.post("/generar-directorio-publico", apublicoct.generar_directorio_publico)
         /**
          * @swagger
-         * /apublico/guardar-imagen-png-jpg:
+         * /apublico/guardar-imagen-png-jpg-publico:
          *  post:
          *      tags: [APublico]
          *      summary: Genera un directorio
@@ -114,7 +114,7 @@ class APublicoRt {
          *                      schema:
          *                          type: object
          */
-        this.router.post("/guardar-imagen-png-jpg", subida_imagenes.single('imagen'), apublicoct.guardar_imagen_png_jpg)
+        this.router.post("/guardar-imagen-png-jpg-publico", apublicoct.guardar_imagen_png_jpg_publico)
     }
 }
 

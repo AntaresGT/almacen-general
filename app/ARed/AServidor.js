@@ -37,7 +37,6 @@ class AServidor {
         // Crear carpetas privadas
         AArchivos.crear_carpeta_si_no_existe("./privado/temporal/imagenes")
         // Crear carpetas publicas
-        AArchivos.crear_carpeta_si_no_existe("./publico/fotos")
         AArchivos.crear_carpeta_si_no_existe("./publico/temporal")
 
         // Directorio publico
