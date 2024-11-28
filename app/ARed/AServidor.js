@@ -4,7 +4,6 @@ import morgan from 'morgan'
 import cors from 'cors'
 import SwaggerJsDoc from 'swagger-jsdoc'
 import SwaggerUI from 'swagger-ui-express'
-import packageJson from './../../package.json'
 
 import { AArchivos, alog } from '@app/ASTD'
 
@@ -69,7 +68,7 @@ class AServidor {
                     openapi: "3.0.0",
                     info: {
                         title: "Almacen general API",
-                        version: packageJson.version
+                        version: "1.0.0",
                     },
                     servers: [
                         {

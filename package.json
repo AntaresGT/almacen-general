@@ -6,7 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "des": "nodemon --exec babel-node app/index.js",
-    "prod": "babel app --out-dir compilado --ignore compilado,@types,node_modules,**/*.test.js"
+    "prod": "babel app --out-dir compilado --ignore compilado,@types,node_modules,**/*.test.js",
+    "iniciar": "node index.js"
   },
   "repository": {
     "type": "git",
