@@ -46,7 +46,7 @@ class APublicoCt {
     
                 ARespondedor.responder_creado(res, {
                     mensaje: "Imagen guardada correctamente",
-                    ruta: `${req.protocol}://${req.headers.host}${process.env.RUTA_INICIAL}/publico/${guardaren}/${nombre_archivo}`
+                    ruta: `https://${req.headers.host}${process.env.RUTA_INICIAL}/publico${guardaren}/${nombre_archivo}`
                 })
             } catch (ex) {
                 alog.error(`Error en APublicoCt.guardar_imagen_png_jpg_publico: ${ex.message}`)
