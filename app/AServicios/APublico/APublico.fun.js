@@ -23,7 +23,10 @@ const filtro_imagenes = (req, file, cb) => {
 
 const subida_imagenes = multer({
     storage: almacenamiento_imagenes,
-    fileFilter: filtro_imagenes
+    fileFilter: filtro_imagenes,
+    limits: {
+        fileSize: 1024 * 1024 * 100 // 100MB
+    }
 })
 
 
