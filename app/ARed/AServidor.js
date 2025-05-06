@@ -16,7 +16,7 @@ import { apublicort } from '@app/AServicios/APublico/APublico.rt'
 class AServidor {
     constructor(puerto) {
         this.app = express()
-        this.puerto = puerto || process.env.PORT || process.env.PUERTO || 3000
+        this.puerto = puerto || process.env.PORT || process.env.PUERTO || 5000
         this.ruta_inicial = process.env.RUTA_INICIAL || "/almacen-general"
         this.configurar()
         this.rutas()
