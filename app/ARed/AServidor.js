@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import SwaggerJsDoc from 'swagger-jsdoc'
 import SwaggerUI from 'swagger-ui-express'
+import fs from 'node:fs'
 
 import { AArchivos, alog } from '@app/ASTD'
 
@@ -37,6 +38,16 @@ class AServidor {
         AArchivos.crear_carpeta_si_no_existe("/app/multimedia-antares/privado/temporal/imagenes")
         // Crear carpetas publicas
         AArchivos.crear_carpeta_si_no_existe("/app/multimedia-antares/publico/temporal")
+
+
+        fs.readdir('/app/multimedia-antares/publico', (err, archivos) => {
+            if (err) {
+                console.error('Error al leer la carpeta:', err);
+                return;
+            }
+
+            console.log('Archivos:', archivos);
+        })
 
         // Directorio publico
         this.app.use(`${this.ruta_inicial}/publico`, express.static('/app/multimedia-antares/publico'))
