@@ -38,18 +38,6 @@ class AServidor {
         // Crear carpetas publicas
         AArchivos.crear_carpeta_si_no_existe("/app/multimedia-antares/publico/temporal")
 
-
-        this.app.use((req, res, next) => {
-            console.log('[REQ]', req.method, req.url)
-            next()
-        })
-
-        // Traza SOLO lo que deba ir a público
-        this.app.use('/almacen-general/publico', (req, res, next) => {
-            console.log('[STATIC] debería servir:', req.url)
-            next()
-        })
-
         // Directorio publico
         this.app.use(`/almacen-general/publico`, express.static('/app/multimedia-antares/publico'))
 
