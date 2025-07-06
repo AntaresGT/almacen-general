@@ -44,8 +44,8 @@ RUN chown -R nodejs:nodejs /app
 # Cambiar al usuario no-root
 USER nodejs
 
-# Exponer el puerto 4500
-EXPOSE 4500
+# Exponer el puerto 4501
+EXPOSE 4501
 
 # Comando para ejecutar la aplicación
 CMD ["node", "compilado/index.js"]
