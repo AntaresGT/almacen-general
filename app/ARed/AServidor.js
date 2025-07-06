@@ -4,7 +4,6 @@ import morgan from 'morgan'
 import cors from 'cors'
 import SwaggerJsDoc from 'swagger-jsdoc'
 import SwaggerUI from 'swagger-ui-express'
-import fs from 'node:fs'
 
 import { AArchivos, alog } from '@app/ASTD'
 
@@ -40,17 +39,19 @@ class AServidor {
         AArchivos.crear_carpeta_si_no_existe("/app/multimedia-antares/publico/temporal")
 
 
-        fs.readdir('/app/multimedia-antares/publico', (err, archivos) => {
-            if (err) {
-                console.error('Error al leer la carpeta:', err);
-                return;
-            }
+        this.app.use((req, res, next) => {
+            console.log('[REQ]', req.method, req.url)
+            next()
+        })
 
-            console.log('Archivos:', archivos);
+        // Traza SOLO lo que deba ir a público
+        this.app.use('/almacen-general/publico', (req, res, next) => {
+            console.log('[STATIC] debería servir:', req.url)
+            next()
         })
 
         // Directorio publico
-        this.app.use(`${this.ruta_inicial}/publico`, express.static('/app/multimedia-antares/publico'))
+        this.app.use(`/almacen-general/publico`, express.static('/app/multimedia-antares/publico'))
 
         const usuario_api = {
             [process.env.USUARIO_API]: process.env.CONTRASENA_API
