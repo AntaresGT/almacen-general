@@ -27,7 +27,7 @@ class AArchivos {
             return path.join(__dirname, '../../publico/temporal/', nombre_archivo);
         }
 
-        return path.join(__dirname, '../publico/temporal/', nombre_archivo);
+        return path.join('/multimedia-antares/publico/temporal/', nombre_archivo);
     }
 
     /**
@@ -39,7 +39,7 @@ class AArchivos {
             return path.join(__dirname, '../../publico/temporal');
         }
 
-        return path.join(__dirname, '../publico/temporal');
+        return '/multimedia-antares/publico/temporal';
     }
 
     /**
@@ -53,7 +53,7 @@ class AArchivos {
             return path.join(__dirname, '../../privado/temporal/', nombre_archivo);
         }
 
-        return path.join(__dirname, '../privado/temporal/', nombre_archivo);
+        return path.join('/multimedia-antares/privado/temporal/', nombre_archivo);
     }
 
     /**
@@ -65,7 +65,7 @@ class AArchivos {
             return path.join(__dirname, '../../privado/temporal');
         }
 
-        return path.join(__dirname, '../privado/temporal');
+        return '/multimedia-antares/privado/temporal';
     }
 
     /**
@@ -77,7 +77,7 @@ class AArchivos {
             return path.join(__dirname, '../../publico');
         }
 
-        return path.join(__dirname, '../publico');
+        return '/multimedia-antares/publico';
     }
 
     /**
