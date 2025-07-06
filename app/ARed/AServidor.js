@@ -34,12 +34,12 @@ class AServidor {
         this.app.use(express.urlencoded({ extended: true }))
 
         // Crear carpetas privadas
-        AArchivos.crear_carpeta_si_no_existe("/multimedia-antares/privado/temporal/imagenes")
+        AArchivos.crear_carpeta_si_no_existe("/app/multimedia-antares/privado/temporal/imagenes")
         // Crear carpetas publicas
-        AArchivos.crear_carpeta_si_no_existe("/multimedia-antares/publico/temporal")
+        AArchivos.crear_carpeta_si_no_existe("/app/multimedia-antares/publico/temporal")
 
         // Directorio publico
-        this.app.use(`${this.ruta_inicial}/publico`, express.static('/multimedia-antares/publico'))
+        this.app.use(`${this.ruta_inicial}/publico`, express.static('/app/multimedia-antares/publico'))
 
         const usuario_api = {
             [process.env.USUARIO_API]: process.env.CONTRASENA_API
