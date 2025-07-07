@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 import SwaggerJsDoc from 'swagger-jsdoc'
 import SwaggerUI from 'swagger-ui-express'
+import compression from 'compression'
 
 import { AArchivos, alog } from '@app/ASTD'
 
@@ -32,6 +33,8 @@ class AServidor {
         /** Configurar el formato de los datos que se envian por POST */
         this.app.use(express.json({ limit: "500mb" }))
         this.app.use(express.urlencoded({ extended: true }))
+        /** Comprimir las respuestas */
+        this.app.use(compression())
 
         // Crear carpetas privadas
         AArchivos.crear_carpeta_si_no_existe("/app/multimedia-antares/privado/temporal/imagenes")
@@ -39,7 +42,15 @@ class AServidor {
         AArchivos.crear_carpeta_si_no_existe("/app/multimedia-antares/publico/temporal")
 
         // Directorio publico
-        this.app.use(`/almacen-general/publico`, express.static('/app/multimedia-antares/publico'))
+        this.app.use(`/almacen-general/publico`, express.static('/app/multimedia-antares/publico', {
+            maxAge: '30d', // 1 día
+            etag: true,
+            lastModified: true,
+            setHeaders: (res, path) => {
+                // Configurar encabezados para permitir CORS
+                res.setHeader('Cache-Control', 'public, max-age=2592000') // 30 días
+            }
+        }))
 
         const usuario_api = {
             [process.env.USUARIO_API]: process.env.CONTRASENA_API

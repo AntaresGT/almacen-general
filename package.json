@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/AntaresGT/almacen-general#readme",
   "dependencies": {
+    "compression": "^1.8.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.13",
