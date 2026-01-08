@@ -1,9 +1,10 @@
+import { AArchivos } from "@app/ASTD"
 import multer from "multer"
 import { v4 } from "uuid"
 
 const almacenamiento_imagenes = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'privado/temporal/imagenes')
+        cb(null, AArchivos.obtener_ruta_privado_temp_sin_nombre())
     },
     filename: (req, file, cb) => {
         cb(null, `${v4()}-${file.originalname}`)
